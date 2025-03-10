@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pepe Website (Alternative)</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            height: 100vh;
+            width: 100vw;
+            overflow: hidden;
+            color: white;
+        }
+
+        /* Full page video background */
+        #video-container {
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            z-index: -1000;
+            background-color: #333; /* Fallback color */
+        }
+
+        /* Overlay to make text more visible */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: -900;
+        }
+
+        /* Content Styling */
+        .content {
+            position: relative;
+            z-index: 2;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        .cta-button {
+            padding: 1rem 2rem;
+            font-size: 1.2rem;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background-color: #45a049;
+        }
+
+        /* Message for when video cannot play */
+        #video-message {
+            display: none;
+            padding: 10px;
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 3rem;
+            }
+            
+            p {
+                font-size: 1.2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Video Background -->
+    <video id="video-container" autoplay loop muted playsinline>
+        <source src="./copy_5D0E9454-632C-4693-BC53-2482E1C5B5E1.mov" type="video/mp4">
+        <!-- Fallback message -->
+        Your browser does not support the video tag.
+    </video>
+    
+    <!-- Overlay -->
+    <div class="overlay"></div>
+    
+    <!-- Main Content -->
+    <div class="content">
+        <h1>Welcome to Pepe</h1>
+        <p>Your next-generation platform</p>
+        <button class="cta-button">Get Started</button>
+        <div id="video-message">Click anywhere to play the background video</div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const video = document.getElementById('video-container');
+            const message = document.getElementById('video-message');
+            
+            // Log when video is ready to play
+            video.addEventListener('canplay', function() {
+                console.log('Video can start playing');
+            });
+            
+            // Log when video metadata is loaded
+            video.addEventListener('loadedmetadata', function() {
+                console.log('Video metadata loaded:', {
+                    duration: video.duration,
+                    width: video.videoWidth,
+                    height: video.videoHeight
+                });
+            });
+            
+            // Log video errors
+            video.addEventListener('error', function() {
+                console.error('Video error:', video.error);
+                // Show a fallback background color
+                document.body.style.backgroundColor = '#333';
+            });
+            
+            // Try to play the video
+            const playPromise = video.play();
+            
+            if (playPromise !== undefined) {
+                playPromise.then(() => {
+                    console.log('Video playback started automatically');
+                }).catch(error => {
+                    console.error('Auto-play was prevented:', error);
+                    message.style.display = 'block';
+                    
+                    // Add a click event to the body to start playing
+                    document.body.addEventListener('click', () => {
+                        video.play().then(() => {
+                            message.style.display = 'none';
+                        }).catch(e => {
+                            console.error('Could not play video after click:', e);
+                        });
+                    });
+                });
+            }
+            
+            // Add click event to the CTA button
+            const ctaButton = document.querySelector('.cta-button');
+            ctaButton.addEventListener('click', function(e) {
+                e.stopPropagation(); // Prevent propagation to body click handler
+                alert('Welcome to Pepe!');
+                // You can redirect to another page or perform other actions here
+            });
+        });
+    </script>
+</body>
+</html>

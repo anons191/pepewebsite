@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pepe Meme Generator</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="css/meme-style.css">
+</head>
+<body>
+    <div class="video-background">
+        <video autoplay loop muted playsinline id="background-video">
+            <source src="../copy_5D0E9454-632C-4693-BC53-2482E1C5B5E1.mov" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+    
+    <a href="../index.html" class="back-button">Back to Home</a>
+    
+    <div class="content">
+        <h1>Pepe Meme Generator</h1>
+        <p>Select a template or upload your own, then add text to create your meme!</p>
+        
+        <div class="meme-container">
+            <div class="meme-workspace">
+                <div class="template-section">
+                    <h2>Choose a Template</h2>
+                    <div class="template-grid" id="template-grid">
+                        <!-- Templates will be loaded here -->
+                        <div class="template-placeholder">Loading templates...</div>
+                    </div>
+                </div>
+                
+                <div class="editor-section">
+                    <h2>Create Your Meme</h2>
+                    <div class="meme-preview" id="meme-preview">
+                        <div class="preview-placeholder">Select a template to start</div>
+                        <!-- Text elements will be added here -->
+                    </div>
+                    
+                    <div class="text-controls">
+                        <div class="text-input-group">
+                            <textarea id="meme-text" placeholder="Enter your text here"></textarea>
+                            <div class="text-options">
+                                <div class="option">
+                                    <label for="text-color">Text Color:</label>
+                                    <input type="color" id="text-color" value="#ffffff">
+                                </div>
+                                <div class="option">
+                                    <label for="text-size">Text Size:</label>
+                                    <input type="range" id="text-size" min="12" max="72" value="36">
+                                </div>
+                                <div class="option">
+                                    <label for="text-stroke">Stroke:</label>
+                                    <input type="checkbox" id="text-stroke" checked>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="action-buttons">
+                            <button id="add-text-btn" class="btn primary-btn">Add Text</button>
+                            <button id="clear-btn" class="btn secondary-btn">Clear All</button>
+                            <button id="download-btn" class="btn success-btn">Download Meme</button>
+                        </div>
+                        <div class="download-info">
+                            <p><small>Click 'Download Meme' when you're ready to save your creation! If download fails, try taking a screenshot.</small></p>
+                            <p><small><a href="fallback.html" class="fallback-link">Having trouble? Download templates directly here</a></small></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Help Modal -->
+    <div id="help-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2>How to Create a Meme</h2>
+            <ol>
+                <li>Select a template from the grid or upload your own image</li>
+                <li>Enter your text in the text area</li>
+                <li>Customize text color and size if desired</li>
+                <li>Click "Add Text" to place text on the image</li>
+                <li>Drag the text to position it anywhere on the image</li>
+                <li>Add multiple text elements as needed</li>
+                <li>Click "Download Meme" when you're finished</li>
+            </ol>
+            <p>Tips: Double-click on any text element to edit or remove it. Use the Clear button to start over.</p>
+        </div>
+    </div>
+
+    <!-- Add hidden canvas to store template images -->
+    <div id="image-cache" style="display: none;"></div>
+
+    <script src="js/html2canvas.min.js"></script>
+    <script src="js/meme-generator.js"></script>
+</body>
+</html>

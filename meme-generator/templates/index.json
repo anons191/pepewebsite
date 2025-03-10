@@ -1,0 +1,32 @@
+[
+  {
+    "name": "DiCaprio Pepe",
+    "path": "templates/DiCaprio_Pepe.jpg",
+    "description": "Leonardo DiCaprio Pepe meme template"
+  },
+  {
+    "name": "Drake Pepe",
+    "path": "templates/Drake_Pepe.jpg",
+    "description": "Drake format with Pepe"
+  },
+  {
+    "name": "Classic Pepe",
+    "path": "templates/IMG_7661.jpeg",
+    "description": "Classic Pepe template"
+  },
+  {
+    "name": "Most Interesting Pepe",
+    "path": "templates/Most_Interesting_Pepe.jpg",
+    "description": "The Most Interesting Pepe in the World"
+  },
+  {
+    "name": "Think About It Pepe",
+    "path": "templates/Think_About_It_Pepe.jpg",
+    "description": "Smart thinking Pepe meme"
+  },
+  {
+    "name": "Wonka Pepe",
+    "path": "templates/Wonka_Pepe.jpg",
+    "description": "Condescending Wonka Pepe meme"
+  }
+]
