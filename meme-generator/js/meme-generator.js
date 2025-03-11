@@ -1,4 +1,12 @@
 document.addEventListener('DOMContentLoaded', function() {
+    // Enable touch scrolling on mobile devices
+    document.addEventListener('touchmove', function(e) {
+        // Only prevent default for elements that need drag handling
+        if (!e.target.closest('.text-element')) {
+            // Allow default scrolling behavior
+            return true;
+        }
+    }, { passive: true });
     // DOM Elements
     const templateGrid = document.getElementById('template-grid');
     const memePreview = document.getElementById('meme-preview');
@@ -366,6 +374,7 @@ document.addEventListener('DOMContentLoaded', function() {
         renderContainer.style.justifyContent = 'center';
         renderContainer.style.padding = '20px';
         renderContainer.style.boxSizing = 'border-box';
+        renderContainer.style.overflow = 'auto'; // Enable scrolling
         
         // Create meme display area (with exact same styling as preview)
         const memeDisplay = document.createElement('div');
@@ -384,6 +393,8 @@ document.addEventListener('DOMContentLoaded', function() {
         const buttonContainer = document.createElement('div');
         buttonContainer.style.display = 'flex';
         buttonContainer.style.gap = '20px';
+        buttonContainer.style.flexWrap = 'wrap';
+        buttonContainer.style.justifyContent = 'center';
         
         const saveButton = document.createElement('button');
         saveButton.textContent = 'Save Image (Right-Click → Save As)';
