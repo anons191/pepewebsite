@@ -94,7 +94,7 @@ p {
 .cta-button {
     padding: 1rem 2rem;
     font-size: 1.2rem;
-    background-color: #4CAF50;
+    background-color: #1dc410; /* Updated green color */
     color: white;
     border: none;
     border-radius: 5px;
@@ -105,15 +105,15 @@ p {
 }
 
 .cta-button:hover {
-    background-color: #45a049;
+    background-color: #19a80e; /* Darker shade for hover */
 }
 
 .meme-btn {
-    background-color: #9c27b0;
+    background-color: #0fd5ff; /* Updated blue color */
 }
 
 .meme-btn:hover {
-    background-color: #7b1fa2;
+    background-color: #0cb8db; /* Darker shade for hover */
 }
 
 /* Additional scrolling reset */
