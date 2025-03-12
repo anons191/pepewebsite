@@ -1,13 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="overflow: auto !important;">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pepe Meme Generator</title>
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="css/meme-style.css">
+    <!-- Force scrolling -->
+    <style>
+        html, body {
+            overflow: auto !important;
+            height: auto !important;
+            min-height: 100vh !important;
+        }
+        .content {
+            height: auto !important;
+            min-height: 100vh !important;
+        }
+    </style>
 </head>
-<body>
+<body style="overflow: auto !important;">
     <div class="video-background">
         <video autoplay loop muted playsinline id="background-video">
             <source src="../copy_5D0E9454-632C-4693-BC53-2482E1C5B5E1.mov" type="video/mp4">
@@ -95,5 +107,23 @@
 
     <script src="js/html2canvas.min.js"></script>
     <script src="js/meme-generator.js"></script>
+    
+    <!-- Force scrolling via JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.body.style.overflow = 'auto';
+            document.documentElement.style.overflow = 'auto';
+            document.body.style.height = 'auto';
+            document.documentElement.style.height = 'auto';
+            
+            // Apply again after a delay to override any potential CSS loading later
+            setTimeout(function() {
+                document.body.style.overflow = 'auto';
+                document.documentElement.style.overflow = 'auto';
+                document.body.style.height = 'auto';
+                document.documentElement.style.height = 'auto';
+            }, 1000);
+        });
+    </script>
 </body>
 </html>
