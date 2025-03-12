@@ -94,7 +94,7 @@ p {
 .cta-button {
     padding: 1rem 2rem;
     font-size: 1.2rem;
-    background-color: #1dc410; /* Updated green color */
+    background-color: #1dc410 !important; /* Updated green color with !important */
     color: white;
     border: none;
     border-radius: 5px;
@@ -105,15 +105,29 @@ p {
 }
 
 .cta-button:hover {
-    background-color: #19a80e; /* Darker shade for hover */
+    background-color: #19a80e !important; /* Darker shade for hover with !important */
 }
 
+/* Specifically targeting meme button with increased specificity and !important */
+.button-group .meme-btn,
+a.cta-button.meme-btn,
+.content .meme-btn {
+    background-color: #0fd5ff !important; /* Updated blue color with !important */
+}
+
+.button-group .meme-btn:hover,
+a.cta-button.meme-btn:hover,
+.content .meme-btn:hover {
+    background-color: #0cb8db !important; /* Darker shade for hover with !important */
+}
+
+/* Override any other styles that might be affecting the meme button */
 .meme-btn {
-    background-color: #0fd5ff; /* Updated blue color */
+    background-color: #0fd5ff !important; /* Blue color with !important */
 }
 
 .meme-btn:hover {
-    background-color: #0cb8db; /* Darker shade for hover */
+    background-color: #0cb8db !important; /* Darker blue for hover */
 }
 
 /* Additional scrolling reset */
