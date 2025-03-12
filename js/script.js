@@ -3,6 +3,16 @@ document.addEventListener('DOMContentLoaded', function() {
     document.body.style.overflow = 'auto';
     document.documentElement.style.overflow = 'auto';
     
+    // Force apply button colors
+    const ctaButtons = document.querySelectorAll('.cta-button');
+    ctaButtons.forEach(button => {
+        if (button.classList.contains('meme-btn')) {
+            button.style.backgroundColor = '#0fd5ff';
+        } else {
+            button.style.backgroundColor = '#1dc410';
+        }
+    });
+    
     // Get the video element
     const video = document.getElementById('background-video');
     
@@ -46,15 +56,28 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     // Add click event to the CTA button
-    const ctaButton = document.querySelector('.cta-button');
-    ctaButton.addEventListener('click', function() {
-        alert('Welcome to Pepe!');
-        // You can redirect to another page or perform other actions here
-    });
+    const ctaButton = document.querySelector('.cta-button:not(.meme-btn)');
+    if (ctaButton) {
+        ctaButton.addEventListener('click', function() {
+            alert('Welcome to Pepe Neutron!');
+            // You can redirect to another page or perform other actions here
+        });
+    }
     
     // Ensure scrolling is enabled even if style sheets are loaded later
     window.setTimeout(function() {
+        // Re-apply all important styles
         document.body.style.overflow = 'auto';
         document.documentElement.style.overflow = 'auto';
+        
+        // Re-apply button colors after a delay to override any potentially late-loading styles
+        const ctaButtons = document.querySelectorAll('.cta-button');
+        ctaButtons.forEach(button => {
+            if (button.classList.contains('meme-btn')) {
+                button.style.backgroundColor = '#0fd5ff';
+            } else {
+                button.style.backgroundColor = '#1dc410';
+            }
+        });
     }, 1000);
 });
