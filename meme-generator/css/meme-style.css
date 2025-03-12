@@ -1,3 +1,10 @@
+/* Ensure scrolling is enabled */
+html, body {
+    overflow: auto !important;
+    min-height: 100% !important;
+    height: auto !important;
+}
+
 /* Meme Generator Styles */
 .meme-container {
     background: rgba(0, 0, 0, 0.7);
