@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en" style="overflow: auto !important;">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Pepe Neutron</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        html, body {
+            overflow: auto !important;
+            height: auto !important;
+            min-height: 100vh !important;
+        }
+        
+        .about-container {
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 15px;
+            padding: 30px;
+            max-width: 800px;
+            margin: 20px auto;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+        }
+        
+        .profile-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        
+        @media (min-width: 768px) {
+            .profile-section {
+                flex-direction: row;
+                align-items: flex-start;
+            }
+        }
+        
+        .profile-image {
+            width: 200px;
+            height: 200px;
+            background-color: #1dc410;
+            border-radius: 50%;
+            margin-bottom: 20px;
+            margin-right: 0;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 100px;
+            color: white;
+            border: 5px solid #0fd5ff;
+        }
+        
+        @media (min-width: 768px) {
+            .profile-image {
+                margin-bottom: 0;
+                margin-right: 30px;
+            }
+        }
+        
+        .profile-text {
+            flex: 1;
+        }
+        
+        .section {
+            margin-bottom: 25px;
+        }
+        
+        h2 {
+            color: #1dc410;
+            border-bottom: 2px solid #0fd5ff;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .back-button {
+            background-color: #0fd5ff;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 20px;
+            transition: background-color 0.3s;
+        }
+        
+        .back-button:hover {
+            background-color: #0cb8db;
+        }
+        
+        .quote {
+            background-color: rgba(29, 196, 16, 0.2);
+            border-left: 4px solid #1dc410;
+            padding: 15px;
+            margin: 20px 0;
+            font-style: italic;
+        }
+        
+        .quote-author {
+            text-align: right;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        
+        .stats {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .stat-box {
+            flex: 1;
+            min-width: 120px;
+            background-color: rgba(15, 213, 255, 0.2);
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        
+        .stat-title {
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+            color: #0fd5ff;
+        }
+        
+        .stat-value {
+            font-size: 1.4rem;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body style="overflow: auto !important;">
+    <div class="video-background">
+        <video autoplay loop muted playsinline id="background-video">
+            <source src="./copy_5D0E9454-632C-4693-BC53-2482E1C5B5E1.mov" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+    
+    <div class="content" style="justify-content: flex-start; padding-top: 50px;">
+        <h1>About Pepe Neutron</h1>
+        
+        <div class="about-container">
+            <div class="profile-section">
+                <div class="profile-image">
+                    PN
+                </div>
+                <div class="profile-text">
+                    <h2>The Legend</h2>
+                    <p>Pepe Neutron is the ultimate blend of memetic wit and intellectual prowess. Born and raised in Las Vegas, Nevada, Pepe found his calling at the intersection of internet culture and quantum physics at UNLV.</p>
+                    <p>As a proud UNLV student, Pepe combines the playful iconography of internet meme culture with the analytical genius of a boy prodigy, creating a unique persona that resonates with meme enthusiasts and academics alike.</p>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2>Origin Story</h2>
+                <p>Legend has it that Pepe Neutron was created when a rare Pepe meme was accidentally uploaded to the UNLV quantum computing server during a particularly intense solar flare. The digital anomaly fused with an AI simulation of a boy genius, resulting in the birth of Las Vegas's most iconic meme-scientific persona.</p>
+                <p>Since then, Pepe has been spotted around campus, always equipped with his notebook of rare formulae and collection of the dankest memes this side of the Colorado River.</p>
+            </div>
+            
+            <div class="section">
+                <h2>Personality</h2>
+                <p>Much like his namesakes, Pepe Neutron embodies a fascinating duality: the laid-back, sometimes melancholic vibe of Pepe combined with the enthusiastic intellectual curiosity of a young science prodigy.</p>
+                <p>Pepe Neutron approaches both meme creation and quantum equations with the same level of dedication. Whether he's calculating the probability of parallel universes or crafting the perfect reaction image, his attention to detail is unmatched.</p>
+                <p>While social situations might not be his forte, his wit and unique perspective make him an unforgettable character in any conversation about either particle physics or internet culture.</p>
+            </div>
+            
+            <div class="section">
+                <h2>Famous Catchphrases</h2>
+                <div class="quote">
+                    "Gotta blast... to the blockchain!"
+                    <div class="quote-author">- Pepe Neutron, after solving a particularly difficult NFT problem</div>
+                </div>
+                
+                <div class="quote">
+                    "According to my calculations, this meme has a dankness coefficient of 9000+"
+                    <div class="quote-author">- Pepe Neutron, analyzing meme potency</div>
+                </div>
+                
+                <div class="quote">
+                    "Feels smart, man."
+                    <div class="quote-author">- Pepe Neutron, after acing his quantum mechanics final</div>
+                </div>
+                
+                <div class="quote">
+                    "When in doubt, meme it out!"
+                    <div class="quote-author">- Pepe Neutron's problem-solving philosophy</div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2>Stats</h2>
+                <div class="stats">
+                    <div class="stat-box">
+                        <div class="stat-title">IQ</div>
+                        <div class="stat-value">420</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-title">Meme Power</div>
+                        <div class="stat-value">Over 9000</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-title">Brain Size</div>
+                        <div class="stat-value">Big</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-title">Rarity</div>
+                        <div class="stat-value">Legendary</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2>Meme Community Ethos</h2>
+                <p>Pepe Neutron stands as a symbol for the meme community's core values:</p>
+                <ul>
+                    <li><strong>Creativity over conformity:</strong> The best memes break patterns rather than follow them</li>
+                    <li><strong>Knowledge is power:</strong> Understanding references and contexts makes for stronger meme creation</li>
+                    <li><strong>Inclusivity through humor:</strong> Memes should bring people together, not divide them</li>
+                    <li><strong>Rapid adaptation:</strong> Meme culture evolves at light speed, and so must its participants</li>
+                    <li><strong>Quality over quantity:</strong> One perfect meme outshines a thousand mediocre ones</li>
+                </ul>
+            </div>
+            
+            <a href="index.html" class="back-button">Back to Home</a>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+    <script>
+        // Ensure the button in the main page links to this about page
+        document.addEventListener('DOMContentLoaded', function() {
+            // Force apply colors here too
+            document.querySelectorAll('.back-button').forEach(button => {
+                button.style.backgroundColor = '#0fd5ff';
+            });
+        });
+    </script>
+</body>
+</html>
