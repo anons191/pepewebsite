@@ -1,4 +1,8 @@
 document.addEventListener('DOMContentLoaded', function() {
+    // FORCE ENABLE SCROLLING - Fix for scrolling issue
+    document.body.style.overflow = 'auto';
+    document.documentElement.style.overflow = 'auto';
+    
     // Get the video element
     const video = document.getElementById('background-video');
     
@@ -47,4 +51,10 @@ document.addEventListener('DOMContentLoaded', function() {
         alert('Welcome to Pepe!');
         // You can redirect to another page or perform other actions here
     });
+    
+    // Ensure scrolling is enabled even if style sheets are loaded later
+    window.setTimeout(function() {
+        document.body.style.overflow = 'auto';
+        document.documentElement.style.overflow = 'auto';
+    }, 1000);
 });
