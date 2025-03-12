@@ -55,15 +55,6 @@ document.addEventListener('DOMContentLoaded', function() {
         content.appendChild(playPrompt);
     });
     
-    // Add click event to the CTA button
-    const ctaButton = document.querySelector('.cta-button:not(.meme-btn)');
-    if (ctaButton) {
-        ctaButton.addEventListener('click', function() {
-            alert('Welcome to Pepe Neutron!');
-            // You can redirect to another page or perform other actions here
-        });
-    }
-    
     // Ensure scrolling is enabled even if style sheets are loaded later
     window.setTimeout(function() {
         // Re-apply all important styles
