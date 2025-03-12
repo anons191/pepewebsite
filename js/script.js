@@ -1,3 +1,4 @@
+// This is an updated version of the script with all alert functionality removed
 document.addEventListener('DOMContentLoaded', function() {
     // FORCE ENABLE SCROLLING - Fix for scrolling issue
     document.body.style.overflow = 'auto';
@@ -11,27 +12,14 @@ document.addEventListener('DOMContentLoaded', function() {
         } else {
             button.style.backgroundColor = '#1dc410';
         }
+        
+        // Prevent any click handlers from being added by explicitly setting onclick to null
+        button.onclick = null;
     });
     
     // Get the video element
     const video = document.getElementById('background-video');
-    
-    // Log video element for debugging
-    console.log('Video element:', video);
-    
-    // Log when video metadata is loaded
-    video.addEventListener('loadedmetadata', function() {
-        console.log('Video metadata loaded:', {
-            duration: video.duration,
-            width: video.videoWidth,
-            height: video.videoHeight
-        });
-    });
-    
-    // Log video errors
-    video.addEventListener('error', function() {
-        console.error('Video error:', video.error);
-    });
+    if (!video) return; // Safety check
     
     // Try to force the video to play
     video.play().then(() => {
@@ -43,16 +31,6 @@ document.addEventListener('DOMContentLoaded', function() {
         document.body.addEventListener('click', () => {
             video.play().catch(e => console.error('Could not play video after click:', e));
         });
-        
-        // Add a visual indicator that user needs to click
-        const content = document.querySelector('.content');
-        const playPrompt = document.createElement('div');
-        playPrompt.textContent = 'Click anywhere to play video';
-        playPrompt.style.padding = '10px';
-        playPrompt.style.background = 'rgba(0,0,0,0.5)';
-        playPrompt.style.borderRadius = '5px';
-        playPrompt.style.marginTop = '20px';
-        content.appendChild(playPrompt);
     });
     
     // Ensure scrolling is enabled even if style sheets are loaded later
@@ -69,6 +47,9 @@ document.addEventListener('DOMContentLoaded', function() {
             } else {
                 button.style.backgroundColor = '#1dc410';
             }
+            
+            // Prevent any click handlers again
+            button.onclick = null;
         });
     }, 1000);
 });
