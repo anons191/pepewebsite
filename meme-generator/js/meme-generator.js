@@ -346,14 +346,83 @@ document.addEventListener('DOMContentLoaded', function() {
         memeText.value = '';
     }
     
-    // Download the meme as an image (CORS-safe alternative)
+    // Download the meme as an image
     function downloadMeme() {
         if (!selectedTemplate) {
             alert('Please select a template first!');
             return;
         }
         
-        console.log('Starting download with template:', selectedTemplate);
+        console.log('Starting download');
+        
+        // Show loading indicator
+        const loadingIndicator = document.createElement('div');
+        loadingIndicator.className = 'loading';
+        loadingIndicator.innerHTML = '<div class="spinner"></div>';
+        memePreview.appendChild(loadingIndicator);
+        
+        // Temporarily hide any elements that shouldn't be in the output
+        const helpBtn = memePreview.querySelector('.help-btn');
+        if (helpBtn) helpBtn.style.display = 'none';
+        
+        // Ensure we're using the simplest html2canvas config for reliability
+        html2canvas(memePreview, {
+            allowTaint: true,
+            useCORS: true,
+            backgroundColor: null,
+            width: memePreview.offsetWidth,
+            height: memePreview.offsetHeight,
+            scale: 0.8, // Lower scale for smaller image
+            ignoreElements: function(element) {
+                return element.classList.contains('loading') || element.classList.contains('help-btn');
+            },
+            foreignObjectRendering: false // Try without foreign object rendering
+        }).then(function(canvas) {
+            // Generate filename
+            const templateName = selectedTemplate.split('/').pop().split('.')[0];
+            const timestamp = new Date().getTime();
+            const filename = `pepe-meme-${templateName}-${timestamp}.png`;
+            
+            try {
+                // Create download link
+                const link = document.createElement('a');
+                link.download = filename;
+                link.href = canvas.toDataURL('image/png');
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                
+                // Clean up
+                if (helpBtn) helpBtn.style.display = 'block';
+                memePreview.removeChild(loadingIndicator);
+                
+                console.log('Meme downloaded successfully');
+            } catch (error) {
+                console.error('Error creating download:', error);
+                if (helpBtn) helpBtn.style.display = 'block';
+                memePreview.removeChild(loadingIndicator);
+                
+                // Fall back to the old method
+                alert('Direct download failed. Using fallback method.');
+                downloadMemeFallback();
+            }
+        }).catch(function(error) {
+            console.error('Error capturing meme with html2canvas:', error);
+            if (helpBtn) helpBtn.style.display = 'block';
+            memePreview.removeChild(loadingIndicator);
+            
+            // Fall back to the old method
+            alert('Could not create meme image. Using fallback method.');
+            downloadMemeFallback();
+        });
+    }
+    
+    // Fallback download method (the original modal approach)
+    function downloadMemeFallback() {
+        if (!selectedTemplate) {
+            alert('Please select a template first!');
+            return;
+        }
         
         // Hide help button if present
         const helpBtn = memePreview.querySelector('.help-btn');

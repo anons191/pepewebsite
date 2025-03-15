@@ -133,6 +133,8 @@ input[type="file"] {
 .meme-preview {
     position: relative;
     width: 100%;
+    max-width: 350px; /* Smaller width for better capture */
+    margin: 0 auto; /* Center it */
     height: 350px;
     background-color: #222;
     background-size: contain;
@@ -163,6 +165,7 @@ input[type="file"] {
     max-width: 90%;
     white-space: pre-wrap;
     word-break: break-word;
+    z-index: 10;
 }
 
 .text-element.selected {
