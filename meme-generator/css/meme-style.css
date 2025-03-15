@@ -1,3 +1,37 @@
+/* Download templates button */
+.download-templates-banner {
+    background-color: rgba(76, 175, 80, 0.1);
+    border: 1px solid rgba(76, 175, 80, 0.3);
+    border-radius: 5px;
+    padding: 10px 15px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.download-templates-btn {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 15px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.download-templates-btn:hover {
+    background-color: #45a049;
+}
+
+.download-templates-banner span {
+    color: #ddd;
+    font-size: 0.9rem;
+}
+
 /* Ensure scrolling is enabled */
 html, body {
     overflow: auto !important;

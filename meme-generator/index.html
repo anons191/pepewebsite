@@ -33,6 +33,11 @@
         <h1>Pepe Meme Generator</h1>
         <p>Select a template or upload your own, then add text to create your meme!</p>
         
+        <div class="download-templates-banner">
+            <button id="download-templates-btn" class="download-templates-btn">Download All Templates</button>
+            <span>Download all meme templates to use offline</span>
+        </div>
+        
         <div class="meme-container">
             <div class="meme-workspace">
                 <div class="template-section">
@@ -105,6 +110,7 @@
     <!-- Add hidden canvas to store template images -->
     <div id="image-cache" style="display: none;"></div>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
     <script src="js/html2canvas.min.js"></script>
     <script src="js/meme-generator.js"></script>
     

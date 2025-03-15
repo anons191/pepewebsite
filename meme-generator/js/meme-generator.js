@@ -149,6 +149,12 @@ document.addEventListener('DOMContentLoaded', function() {
         textColor.addEventListener('input', updateActiveText);
         textSize.addEventListener('input', updateActiveText);
         textStroke.addEventListener('change', updateActiveText);
+        
+        // Download templates button
+        const downloadTemplatesBtn = document.getElementById('download-templates-btn');
+        if (downloadTemplatesBtn) {
+            downloadTemplatesBtn.addEventListener('click', downloadAllTemplates);
+        }
     }
     
     // Select a template and display it
@@ -346,7 +352,7 @@ document.addEventListener('DOMContentLoaded', function() {
         memeText.value = '';
     }
     
-    // Download the meme as an image
+    // Download the meme as an image using html2canvas
     function downloadMeme() {
         if (!selectedTemplate) {
             alert('Please select a template first!');
@@ -415,6 +421,68 @@ document.addEventListener('DOMContentLoaded', function() {
             alert('Could not create meme image. Using fallback method.');
             downloadMemeFallback();
         });
+    }
+    
+    // Download all templates as a zip file
+    function downloadAllTemplates() {
+        console.log('Downloading all templates...');
+        
+        // Create loading indicator
+        const loadingIndicator = document.createElement('div');
+        loadingIndicator.className = 'loading';
+        loadingIndicator.innerHTML = '<div class="spinner"></div>';
+        document.querySelector('.download-templates-banner').appendChild(loadingIndicator);
+        
+        // Disable the button during download
+        const downloadBtn = document.getElementById('download-templates-btn');
+        if (downloadBtn) downloadBtn.disabled = true;
+        
+        // Create a new JSZip instance
+        const zip = new JSZip();
+        const templatePromises = [];
+        
+        // Add all templates to the zip
+        defaultTemplates.forEach(template => {
+            const templateName = template.path.split('/').pop();
+            const promise = fetch(template.path)
+                .then(response => response.blob())
+                .then(blob => {
+                    zip.file(templateName, blob);
+                    console.log(`Added ${templateName} to zip`);
+                })
+                .catch(error => {
+                    console.error(`Error adding ${templateName} to zip:`, error);
+                });
+            
+            templatePromises.push(promise);
+        });
+        
+        // When all templates are added, generate the zip
+        Promise.all(templatePromises)
+            .then(() => {
+                return zip.generateAsync({ type: 'blob' });
+            })
+            .then(content => {
+                // Create download link
+                const link = document.createElement('a');
+                link.href = URL.createObjectURL(content);
+                link.download = 'pepe-meme-templates.zip';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                
+                // Clean up
+                if (downloadBtn) downloadBtn.disabled = false;
+                loadingIndicator.remove();
+                
+                console.log('Templates zip downloaded successfully');
+            })
+            .catch(error => {
+                console.error('Error creating templates zip:', error);
+                if (downloadBtn) downloadBtn.disabled = false;
+                loadingIndicator.remove();
+                alert('Error creating templates zip. Please try again.');
+            });
     }
     
     // Fallback download method (the original modal approach)
